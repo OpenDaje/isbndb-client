@@ -95,7 +95,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          vendor/bin/phpunit --testsuite=unit --testdox --no-interaction --colors=always \
+          vendor/bin/phpunit --testdox --no-interaction --colors=always \
           --coverage-clover $UNIT_TEST_CLOVER_FILENAME \
           --log-junit $UNIT_TEST_JUNIT_FILENAME \
           --testdox-text $UNIT_TEST_DOC_FILENAME
