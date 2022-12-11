@@ -1,0 +1,18 @@
+name: CD/CI
+
+on: [ push ]
+
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: OpenDaje/isbndb-client/.github/workflows/commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  publish-metrics-workflow:
+    name: Publish Metrics
+    needs:
+      - commit-stage-workflow
+    uses: OpenDaje/isbndb-client/.github/workflows/publish-coverage-metrics.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
