@@ -26,6 +26,6 @@ class Author extends AbstractApi
      */
     public function searchAuthors(string $searchTerm, array $params = []): array|string
     {
-        return $this->get('/author/' . rawurlencode($searchTerm), $params);
+        return $this->get('/authors/' . rawurlencode($searchTerm), $params);
     }
 }
