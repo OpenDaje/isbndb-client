@@ -33,6 +33,7 @@ class IsbnDbClientTest extends TestCase
 
     /**
      * @dataProvider getApiClassesProvider
+     * @testdox Should get api instance for $apiName in resource class $class
      */
     public function testShouldGetApiInstance($apiName, $class): void
     {
@@ -43,6 +44,7 @@ class IsbnDbClientTest extends TestCase
 
     /**
      * @dataProvider getApiClassesProvider
+     * @testdox Should get 'magic' api instance for $apiName in resource class $class
      */
     public function testShouldGetMagicApiInstance($apiName, $class): void
     {
@@ -69,6 +71,7 @@ class IsbnDbClientTest extends TestCase
     {
         return [
             ['author', Api\Author::class],
+            ['publisher', Api\Publisher::class],
         ];
     }
 }
