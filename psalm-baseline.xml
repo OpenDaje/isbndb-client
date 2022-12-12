@@ -11,4 +11,10 @@
       <code>searchAuthors</code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="tests/Api/PublisherTest.php">
+    <UndefinedInterfaceMethod occurrences="2">
+      <code>getPublisherDetails</code>
+      <code>searchPublishers</code>
+    </UndefinedInterfaceMethod>
+  </file>
 </files>
