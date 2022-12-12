@@ -2,6 +2,9 @@
 
 namespace IsbnDbClient\Tests;
 
+use IsbnDbClient\Api;
+use IsbnDbClient\Exception\BadMethodCallException;
+use IsbnDbClient\Exception\InvalidArgumentException;
 use IsbnDbClient\IsbnDbClient;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -26,5 +29,46 @@ class IsbnDbClientTest extends TestCase
         $isbnDbClient = IsbnDbClient::createWithHttpClient($httpClientMock);
 
         self::assertInstanceOf(ClientInterface::class, $isbnDbClient->getHttpClient());
+    }
+
+    /**
+     * @dataProvider getApiClassesProvider
+     */
+    public function testShouldGetApiInstance($apiName, $class): void
+    {
+        $isbnDbClient = new IsbnDbClient();
+
+        self::assertInstanceOf($class, $isbnDbClient->api($apiName));
+    }
+
+    /**
+     * @dataProvider getApiClassesProvider
+     */
+    public function testShouldGetMagicApiInstance($apiName, $class): void
+    {
+        $isbnDbClient = new IsbnDbClient();
+
+        self::assertInstanceOf($class, $isbnDbClient->$apiName());
+    }
+
+    public function testShouldNotGetApiInstance(): void
+    {
+        self::expectException(InvalidArgumentException::class);
+        $isbnDbClient = new IsbnDbClient();
+        $isbnDbClient->api('do_not_exist');
+    }
+
+    public function testShouldNotGetMagicApiInstance(): void
+    {
+        self::expectException(BadMethodCallException::class);
+        $isbnDbClient = new IsbnDbClient();
+        $isbnDbClient->doNotExist();
+    }
+
+    public function getApiClassesProvider(): array
+    {
+        return [
+            ['author', Api\Author::class],
+        ];
     }
 }
