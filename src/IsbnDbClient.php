@@ -50,6 +50,9 @@ class IsbnDbClient
             case 'publisher':
                 $api = new Api\Publisher($this);
                 break;
+            case 'search':
+                $api = new Api\Search($this);
+                break;
             case 'subject':
                 $api = new Api\Subject($this);
                 break;

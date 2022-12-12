@@ -17,6 +17,11 @@
       <code>searchPublishers</code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="tests/Api/SearchTest.php">
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>searchAll</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="tests/Api/StatsTest.php">
     <UndefinedInterfaceMethod occurrences="1">
       <code>getStatus</code>
