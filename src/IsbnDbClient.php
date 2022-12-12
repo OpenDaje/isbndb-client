@@ -53,6 +53,9 @@ class IsbnDbClient
             case 'subject':
                 $api = new Api\Subject($this);
                 break;
+            case 'stats':
+                $api = new Api\Stats($this);
+                break;
 
             default:
                 throw new InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
