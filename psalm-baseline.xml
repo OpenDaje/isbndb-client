@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="tests/Api/AbstractApiTest.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;getApiClass()</code>
+    </ArgumentTypeCoercion>
+  </file>
   <file src="tests/Api/AuthorTest.php">
     <UndefinedInterfaceMethod occurrences="2">
       <code>getAuthorDetails</code>
