@@ -5,6 +5,8 @@ namespace IsbnDbClient\Tests;
 use IsbnDbClient\Api;
 use IsbnDbClient\Exception\BadMethodCallException;
 use IsbnDbClient\Exception\InvalidArgumentException;
+use IsbnDbClient\HttpClient\Builder;
+use IsbnDbClient\HttpClient\Plugin\Authentication;
 use IsbnDbClient\IsbnDbClient;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -65,6 +67,30 @@ class IsbnDbClientTest extends TestCase
         self::expectException(BadMethodCallException::class);
         $isbnDbClient = new IsbnDbClient();
         $isbnDbClient->doNotExist();
+    }
+
+    public function testShouldAuthenticateUsingGivenToken(): void
+    {
+        $builder = self::getMockBuilder(Builder::class)
+            ->onlyMethods(['addPlugin', 'removePlugin'])
+            ->getMock();
+        $builder->expects(self::once())
+            ->method('addPlugin')
+            ->with(self::equalTo(new Authentication('token')));
+
+        $builder->expects(self::once())
+            ->method('removePlugin')
+            ->with(Authentication::class);
+
+        $client = self::getMockBuilder(IsbnDbClient::class)
+            ->disableOriginalConstructor()
+            ->onlyMethods(['getHttpClientBuilder'])
+            ->getMock();
+        $client->expects(self::any())
+            ->method('getHttpClientBuilder')
+            ->willReturn($builder);
+
+        $client->authenticate('token');
     }
 
     public function getApiClassesProvider(): array
