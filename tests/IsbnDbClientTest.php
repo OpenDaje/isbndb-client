@@ -72,6 +72,7 @@ class IsbnDbClientTest extends TestCase
         return [
             ['author', Api\Author::class],
             ['publisher', Api\Publisher::class],
+            ['subject', Api\Subject::class],
         ];
     }
 }
