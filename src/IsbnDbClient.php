@@ -10,6 +10,7 @@ use IsbnDbClient\Api\AbstractApi;
 use IsbnDbClient\Exception\BadMethodCallException;
 use IsbnDbClient\Exception\InvalidArgumentException;
 use IsbnDbClient\HttpClient\Builder;
+use IsbnDbClient\HttpClient\Plugin\Authentication;
 use IsbnDbClient\HttpClient\Plugin\IsbnDbExceptionThrower;
 use Psr\Http\Client\ClientInterface;
 
@@ -77,6 +78,16 @@ class IsbnDbClient
         } catch (InvalidArgumentException) {
             throw new BadMethodCallException(sprintf('Undefined method called: "%s"', $name));
         }
+    }
+
+    public function authenticate(string $token): void
+    {
+        if ('' === $token) {
+            throw new InvalidArgumentException('API Token required.');
+        }
+
+        $this->getHttpClientBuilder()->removePlugin(Authentication::class);
+        $this->getHttpClientBuilder()->addPlugin(new Authentication($token));
     }
 
     public function getHttpClient(): HttpMethodsClientInterface
