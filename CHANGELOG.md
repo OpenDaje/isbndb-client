@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 [Not Released]
+## 0.1.0
 
 ### Added
-- InbnDbClient
+- IsbnDbClient
