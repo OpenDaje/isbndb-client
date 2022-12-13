@@ -1,5 +1,7 @@
 # IsbnDb Client
 
+[![Latest Stable Version](http://poser.pugx.org/opendaje/isbndb-client/v)](https://packagist.org/packages/opendaje/isbndb-client) [![Total Downloads](http://poser.pugx.org/opendaje/isbndb-client/downloads)](https://packagist.org/packages/opendaje/isbndb-client) [![Latest Unstable Version](http://poser.pugx.org/opendaje/isbndb-client/v/unstable)](https://packagist.org/packages/opendaje/isbndb-client) [![License](http://poser.pugx.org/opendaje/isbndb-client/license)](https://packagist.org/packages/opendaje/isbndb-client) [![PHP Version Require](http://poser.pugx.org/opendaje/isbndb-client/require/php)](https://packagist.org/packages/opendaje/isbndb-client)
+
 [![CD/CI](https://github.com/OpenDaje/isbndb-client/actions/workflows/cd-ci.yaml/badge.svg)](https://github.com/OpenDaje/isbndb-client/actions/workflows/cd-ci.yaml)
 
 ⚠ Launching early stage releases (0.x.x) could break the API according to [Semantic Versioning 2.0](https://semver.org/). We are using *minor* for breaking changes.
