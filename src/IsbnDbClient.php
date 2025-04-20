@@ -65,7 +65,7 @@ class IsbnDbClient
                 break;
 
             default:
-                throw new InvalidArgumentException(sprintf('Undefined api instance called: "%s"', $name));
+                throw new InvalidArgumentException(\sprintf('Undefined api instance called: "%s"', $name));
         }
 
         return $api;
@@ -76,7 +76,7 @@ class IsbnDbClient
         try {
             return $this->api($name);
         } catch (InvalidArgumentException) {
-            throw new BadMethodCallException(sprintf('Undefined method called: "%s"', $name));
+            throw new BadMethodCallException(\sprintf('Undefined method called: "%s"', $name));
         }
     }
 
